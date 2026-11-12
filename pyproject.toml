@@ -1,0 +1,33 @@
+[project]
+name = "memory-vault"
+version = "0.1.0"
+description = "A personal AI memory you own: a remote MCP server that any AI assistant can use to remember and recall things about you."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = [
+    "fastmcp==4.1.8",          # pinned: MCP framework (targets spec 2026-07-28, still serves older clients)
+    "asyncpg>=0.30",            # fast async Postgres driver
+    "pydantic-settings>=2.6",   # typed config from environment variables
+    "uvicorn>=0.32",            # ASGI server
+    "cryptography>=43",         # Fernet encryption for stored OAuth state
+]
+
+[project.optional-dependencies]
+# Local embeddings for semantic search. Needs ~300 MB extra RAM, so it is off by default
+# on 512 MB free hosts. Full-text search works without it.
+embeddings = ["fastembed>=0.9"]
+dev = ["pytest>=8", "pytest-asyncio>=0.24", "httpx>=0.27"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/memory_vault"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+testpaths = ["tests"]
