@@ -2,7 +2,7 @@
 # Secrets marked sync:false are entered in the Render dashboard, never committed.
 services:
   - type: web
-    name: memory-vault
+    name: samvid                     # becomes https://samvid.onrender.com if that name is free
     runtime: docker
     plan: free
     healthCheckPath: /health
@@ -10,7 +10,7 @@ services:
     envVars:
       - key: DATABASE_URL            # Neon "direct" connection string
         sync: false
-      - key: PUBLIC_BASE_URL         # e.g. https://memory-vault-xxxx.onrender.com
+      - key: PUBLIC_BASE_URL         # e.g. https://samvid.onrender.com
         sync: false
       - key: AUTH_MODE
         value: github
