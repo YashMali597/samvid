@@ -89,7 +89,7 @@ async def test_http_multi_user_isolation(token_app):
             # Public routes stay public
             assert (await http.get(f"{base}/health")).json()["status"] == "ok"
             assert (await http.get(f"{base}/ready")).json()["status"] == "ready"
-            assert "Memory Vault" in (await http.get(f"{base}/")).text
+            assert "Samvid" in (await http.get(f"{base}/")).text
 
 
 async def test_github_oauth_discovery(tmp_path):

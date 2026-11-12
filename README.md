@@ -1,4 +1,6 @@
-# Memory Vault
+# Samvid
+
+*Samvid* (संविद्, Sanskrit: "knowing together", shared knowledge and mutual understanding).
 
 A personal, portable AI memory you own. It's a **remote MCP server**: connect it once to
 Claude, ChatGPT, Cursor, Claude Code or any other MCP client, and they all share one

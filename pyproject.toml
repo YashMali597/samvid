@@ -1,7 +1,7 @@
 [project]
-name = "memory-vault"
+name = "samvid"
 version = "0.1.0"
-description = "A personal AI memory you own: a remote MCP server that any AI assistant can use to remember and recall things about you."
+description = "Samvid (Sanskrit: shared knowing), a personal AI memory you own: a remote MCP server that any AI assistant can use to remember and recall things about you."
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }

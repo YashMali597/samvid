@@ -56,7 +56,7 @@ MODERN_PROTOCOL = "2026-07-28"
 CONFIRM_PHRASE = "DELETE ALL MY MEMORIES"
 
 INSTRUCTIONS = """\
-Memory Vault is the user's personal, long-term memory that persists across conversations
+Samvid is the user's personal, long-term memory that persists across conversations
 and across AI apps. Use it to give answers that reflect what you already know about them.
 
 When to RECALL: at the start of a task where the user's preferences, history, projects or
@@ -130,7 +130,7 @@ def create_server(
     issuer = None if resolved_auth is None else ("github" if settings.auth_mode == "github" else "token")
 
     mcp = FastMCP(
-        name="Memory Vault",
+        name="Samvid",
         version=__version__,
         instructions=INSTRUCTIONS,
         website_url=settings.public_base_url,
@@ -335,7 +335,7 @@ def create_server(
             raise ToolError(f"Confirmation phrase did not match '{CONFIRM_PHRASE}'. Nothing was deleted.")
 
         question = (
-            f"Permanently delete all {total} memories in your Memory Vault? This cannot be undone."
+            f"Permanently delete all {total} memories in Samvid? This cannot be undone."
         )
         schema = {
             "type": "object",
@@ -509,18 +509,18 @@ def _client_can_elicit(ctx: Context) -> bool:
 
 def _landing_page(settings: Settings) -> str:
     url = f"{settings.public_base_url}{settings.mcp_path}"
-    cfg = json.dumps({"mcpServers": {"memory-vault": {"url": url}}}, indent=2)
+    cfg = json.dumps({"mcpServers": {"samvid": {"url": url}}}, indent=2)
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Memory Vault</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Samvid</title>
 <style>body{{font:16px/1.6 system-ui,sans-serif;max-width:680px;margin:48px auto;padding:0 20px;color:#1d1d1f}}
 code,pre{{background:#f4f4f5;border-radius:6px;padding:2px 6px}}pre{{padding:12px;overflow:auto}}
 h1{{margin-bottom:0}}.sub{{color:#555;margin-top:4px}}</style></head><body>
-<h1>Memory Vault</h1><p class="sub">A personal memory you own, for any AI assistant that speaks MCP.</p>
+<h1>Samvid</h1><p class="sub">A personal memory you own, for any AI assistant that speaks MCP.</p>
 <h2>Connect</h2>
 <p><b>Server URL:</b> <code>{url}</code></p>
 <ul>
 <li><b>Claude</b> (web, desktop, mobile): Settings &rarr; Connectors &rarr; Add custom connector &rarr; paste the URL.</li>
-<li><b>Claude Code</b>: <code>claude mcp add --transport http memory-vault {url}</code></li>
+<li><b>Claude Code</b>: <code>claude mcp add --transport http samvid {url}</code></li>
 <li><b>Other MCP clients</b>:</li></ul><pre>{cfg}</pre>
 <p>You'll sign in with GitHub. We only read your public GitHub id to keep your memories separate
 from everyone else's. Your memories are never shared, and you can export or delete them at any time
