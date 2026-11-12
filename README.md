@@ -55,10 +55,3 @@ bypass Row-Level Security, so tests must not run as one.
 export TEST_DATABASE_URL=postgresql://vault_app:app@localhost:5432/vault_test
 pytest -q
 ```
-
-## Deploy for free
-
-The course (Step 13) walks through each step: create a Neon project, register a GitHub
-OAuth App with callback `https://YOUR-APP.onrender.com/auth/callback`, deploy
-`render.yaml` as a Render Blueprint, then add `https://YOUR-APP.onrender.com/mcp` as a
-custom connector in Claude.
